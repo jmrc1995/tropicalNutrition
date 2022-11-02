@@ -12,56 +12,50 @@ import { agedCheese } from "../utils/Cheese";
 import { useState } from "react";
 
 function NutritionFilter() {
-  const [nutri, setNutri] = useState([]);
+  let [sortType, setSortType] = React.useState(" ");
+  let [sortedArr, setSortedArr] = React.useState([]);
 
-  let descCholesterol = () => {
-    agedCheese.sort((a, b) => {
-      let descNutri = a.cholesterol - b.cholesterol;
-    //   return descNutri
-      setNutri(descNutri)
-    });
-    
+  const sorted = (e) => {
+    setSortType(e);
+    if (sortType === "asc") {
+      agedCheese.sort((a, b) => {
+        return a.cholesterol - b.cholesterol;
+      });
+    } else {
+      agedCheese.sort((a, b) => {
+        return b.cholesterol - a.cholesterol;
+      });
+    }
   };
+  
 
-  let ascCholesterol = () => {
-    agedCheese.sort((a, b) => {
-      let ascNutri = b.cholesterol - a.cholesterol;
-    //   return ascNutri
-      setNutri(ascNutri)
-    });
-    
-  };
+
+  console.log(sortedArr)
+
+  setSortedArr(agedCheese)
 
   return (
+
     <Box>
       <Grid templateRows="repeat(2, 1fr)" justifyItems={"center"}>
-        {/* <GridItem>
-          <Image 
-            src={"/assets/bannerBackground.jpeg"}
-            boxSize={50}  />
-        </GridItem> */}
         <GridItem>
           <Heading>Aged Cheeses</Heading>
-          <Select placeholder="Filter by nutrition">
-            <option 
-                value="Low Cholesterol" 
-                onClick={descCholesterol()}>
-              Cholesterol: Low to High
-            </option>
-            <option 
-                value="High Cholesterol"
-                onClick={ascCholesterol()}
-                >Cholesterol: High to Low
-            </option>
+          <Select
+            placeholder="Filter by nutrition"
+            onChange={(e) => sorted(e.target.value)}
+            // value={sortType}
+          >
+            <option value={"dsc"}>Cholesterol: Low to High</option>
+            <option value={"asc"}>Cholesterol: High to Low</option>
           </Select>
           <GridItem>
             <Flex flexDirection={"column"}>
-              {nutri.map((item) => (
-                <Box>
+              {sortedArr.map((item, index) => {
+                <Box key={index}>
                   <Heading>{item.name}</Heading>
-                  <Image src={item.image} />
-                </Box>
-              ))}
+             
+                </Box>;
+              })}
             </Flex>
           </GridItem>
         </GridItem>
