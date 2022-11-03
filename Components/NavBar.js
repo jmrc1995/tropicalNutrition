@@ -18,11 +18,12 @@ const NavBar = () => {
           w="100%"
           border={4}
           color={"red"}
+          justifyContent={"center"}
         >
           <Image 
             src="/assets/tropicalCheeseLogo.svg"
-            boxSize={"100px"} />
-            
+            boxSize={"140px"} />
+
         </Flex>
       </chakra.header>
     </>
