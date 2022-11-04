@@ -153,7 +153,7 @@ function NutritionFilter() {
             {" "}
             descending{" "}
           </Text>
-          descending order,based on which nutritional fact is chosen.
+          order,based on which nutritional fact is chosen.
         </Box>
       </Box>
     </Box>
