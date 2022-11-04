@@ -9,7 +9,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: 
+- Solution URL: https://github.com/jmrc1995/tropicalNutrition
 - Live Site URL:https://tropical-nutrition.vercel.app/
 
 ## My process
